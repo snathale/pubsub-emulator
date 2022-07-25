@@ -1,7 +1,6 @@
-FROM google/cloud-sdk:alpine
+FROM google/cloud-sdk:slim
 
-RUN apk --update add openjdk8-jre
-RUN gcloud components install pubsub-emulator beta --quiet
+RUN apt-get update && apt-get install -y default-jdk && apt-get install google-cloud-sdk-pubsub-emulator
 
 COPY init.sh .
 
